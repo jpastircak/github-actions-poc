@@ -37,13 +37,11 @@ jobs:
        uses: skjolber/maven-cache-github-action@v1
        with:
          step: save
-     - name: Setup Pages
-       uses: actions/configure-pages@v2
-     - name: Upload artifact
-       uses: actions/upload-pages-artifact@v1
+     - name: Deploy
+       uses: peaceiris/actions-gh-pages@v3
        with:
-          path: 'target/site/serenity/'
-     - name: Deploy to GitHub Pages
-       id: deployment
-       uses: actions/deploy-pages@v1     
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: target/site/serenity/
+        destination_dir: 1
+        keep_files: true    
       
