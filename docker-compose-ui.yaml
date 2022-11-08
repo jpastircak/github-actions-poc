@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  tests-ui:
+    image: maven:latest
+    depends_on:
+      - selenium-chrome
+    volumes:
+      - .:/tests
+      - $HOME/.m2:/root/.m2
+    working_dir: /tests
+    environment:
+      - SELENIUM_HUB_URL=http://selenium-chrome:4444/wd/hub
+    command: ./run-ui-tests.sh
+  selenium-chrome:
+    image: selenium/standalone-chrome:106.0
+    container_name: selenium-chrome
+    ports:
+      - "4444:4444"
+    environment:
+      - SE_NODE_MAX_SESSIONS=1
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_START_XVFB=false
+
+
+
