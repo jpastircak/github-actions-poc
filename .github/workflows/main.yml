@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v3
+       with:
+         cache: 'maven'
      - name: Run Serenity tests
        run: |
           docker-compose -f docker-compose-ui.yaml up --exit-code-from tests-ui
@@ -22,6 +24,7 @@ jobs:
          name: serenity-test-report
          path: target/site/serenity/*.*
      - name: Publish Serenity report
-       run: |
-          echo "Publishing Serenity report"
+       uses: pavi2410/html-preview-action@v2
+       with:
+         html_file: 'target/site/serenity/index.html'
       
