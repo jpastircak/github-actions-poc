@@ -1,0 +1,16 @@
+name: Run Serenity tests
+on:
+  workflow_dispatch:
+  
+jobs:
+  run_serenity_tests:
+    name: Run Serenity Tests
+    runs-on: ubuntu-latest
+    steps:
+     - name: Run Serenity tests
+       run: |
+          echo "Running maven clean verify"
+     - name: Publish Serenity report
+       run: |
+          echo "Publishing Serenity report"
+      
