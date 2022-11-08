@@ -7,9 +7,10 @@ jobs:
     name: Run Serenity Tests
     runs-on: ubuntu-latest
     steps:
+     - uses: actions/checkout@v3
      - name: Run Serenity tests
        run: |
-          echo "Running maven clean verify"
+          docker-compose -f docker-compose-ui.yaml up --exit-code-from tests-ui
      - name: Publish Serenity report
        run: |
           echo "Publishing Serenity report"
