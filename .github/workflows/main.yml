@@ -8,12 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v3
-     - name: Retrieve Maven cache
-       uses: actions/cache@v3
+     - name: Restore Maven cache
+       uses: skjolber/maven-cache-github-action@v1
        with:
-         key: maven-cache
-         path: |
-           $HOME/.m2  
+         step: restore 
      - name: Run Serenity tests
        run: |
           docker-compose -f docker-compose-ui.yaml up --exit-code-from tests-ui
@@ -30,10 +28,8 @@ jobs:
      - name: Publish Serenity report
        run: |
          echo 'Publishing report'
-     - name: Store Maven cache
-       uses: actions/cache@v3
+     - name: Save Maven cache
+       uses: skjolber/maven-cache-github-action@v1
        with:
-         key: maven-cache
-         path: |
-           $HOME/.m2 
+         step: save 
       
