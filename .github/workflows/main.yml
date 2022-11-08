@@ -11,6 +11,16 @@ jobs:
      - name: Run Serenity tests
        run: |
           docker-compose -f docker-compose-ui.yaml up --exit-code-from tests-ui
+     - name: Process JUnit test results
+       uses: mikipenz/action-junit-report@v3
+       if: always()
+       with:
+         report_paths: '**/target/site/serenity/SERENITY-JUNIT-*.xml'
+     - name: Archive test report as artifact
+       uses: actions/upload-artifact@v3
+       with:
+         name: serenity-test-report
+         path: target/site/serenity/*.*
      - name: Publish Serenity report
        run: |
           echo "Publishing Serenity report"
