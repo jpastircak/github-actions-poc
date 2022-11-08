@@ -9,9 +9,7 @@ permissions:
   
 jobs:
   run_serenity_tests:
-    environment:
-      name: github-pages
-      url: "${{ steps.deployment.outputs.page_url }}${{env:GITHUB_RUN_NUMBER}}"
+    
     name: Run Serenity Tests
     runs-on: ubuntu-latest
     steps:
@@ -38,6 +36,7 @@ jobs:
        with:
          step: save
      - name: Deploy
+       id: deployment
        uses: peaceiris/actions-gh-pages@v3
        with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
