@@ -11,7 +11,7 @@ jobs:
   run_serenity_tests:
     environment:
       name: github-pages
-      url: "${{ steps.deployment.outputs.page_url }}/$env:GITHUB_RUN_NUMBER"
+      url: "${{ steps.deployment.outputs.page_url }}${{env:GITHUB_RUN_NUMBER}}"
     name: Run Serenity Tests
     runs-on: ubuntu-latest
     steps:
