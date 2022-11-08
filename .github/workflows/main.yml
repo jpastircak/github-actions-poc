@@ -8,12 +8,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v3
-     - name: Cache dependencies
+     - name: Cache Maven dependencies
        uses: actions/cache@v3
        with:
+         key: maven-cache
          path: |
            $HOME/.m2
-           /var/lib/docker
+     - name: Cache Docker images
+       uses: actions/cache@v3
+       with:
+         key: docker-cache
+         path: |
+           /var/lib/docker    
      - name: Run Serenity tests
        run: |
           docker-compose -f docker-compose-ui.yaml up --exit-code-from tests-ui
