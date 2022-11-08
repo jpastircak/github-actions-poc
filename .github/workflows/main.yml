@@ -4,6 +4,9 @@ on:
   
 jobs:
   run_serenity_tests:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     name: Run Serenity Tests
     runs-on: ubuntu-latest
     steps:
