@@ -1,6 +1,10 @@
-name: Run Serenity tests
+name: Run Serenity tests and publish test report
 on:
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      test-environment:
+        required: true
+        type: string
   
 permissions:
   contents: write
@@ -23,6 +27,8 @@ jobs:
      - name: Run Serenity tests
        run: |
           docker-compose -f docker-compose-ui.yaml up --exit-code-from tests-ui
+       with:
+         test-environment: ${{ inputs.test-environment }}
      - name: Process JUnit test results
        uses: mikepenz/action-junit-report@v3
        if: always()
@@ -43,6 +49,6 @@ jobs:
        with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: target/site/serenity/
-        destination_dir: ${{github.run_number}}
+        destination_dir: ${{ inputs.test-environment }}/${{github.run_number}}
         keep_files: true    
       

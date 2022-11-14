@@ -1,0 +1,8 @@
+name: Run tests on ENV1
+on:
+  workflow_dispatch:
+jobs:
+  call-run-tests-workflow:
+    uses: jpastircak/github-actions-poc/.github/workflows/main.yml
+    with:
+      test-environment: ENV2
