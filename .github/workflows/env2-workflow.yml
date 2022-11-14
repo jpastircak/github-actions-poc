@@ -1,4 +1,4 @@
-name: Run tests on ENV1
+name: Run tests on ENV2
 on:
   workflow_dispatch:
 jobs:
