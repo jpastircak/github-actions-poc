@@ -27,8 +27,6 @@ jobs:
      - name: Run Serenity tests
        run: |
           docker-compose -f docker-compose-ui.yaml up --exit-code-from tests-ui
-       with:
-         test-environment: ${{ inputs.test-environment }}
      - name: Process JUnit test results
        uses: mikepenz/action-junit-report@v3
        if: always()
