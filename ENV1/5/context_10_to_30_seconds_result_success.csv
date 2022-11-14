@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Checkout tests","Test checkout with complete order","SUCCESS","2022-11-14T14:15:14.002003125Z[Etc/UTC]","0.0","28.23"
+"Login tests","Test login positive","SUCCESS","2022-11-14T14:15:14.025462744Z[Etc/UTC]","0.0","23.76"
+"Cart tests","Test product added into the basket","SUCCESS","2022-11-14T14:15:14.287271806Z[Etc/UTC]","0.0","25.42"
