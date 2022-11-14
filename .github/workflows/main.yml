@@ -15,7 +15,7 @@ jobs:
   run_serenity_tests:
     environment:
       name: github-pages
-      url: https://jpastircak.github.io/github-actions-poc/${{ github.run_number }}/    
+      url: https://jpastircak.github.io/github-actions-poc/${{ inputs.test-environment }}/${{github.run_number}}/
     name: Run Serenity Tests
     runs-on: ubuntu-latest
     steps:
