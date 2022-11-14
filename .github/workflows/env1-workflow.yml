@@ -3,6 +3,6 @@ on:
   workflow_dispatch:
 jobs:
   call-run-tests-workflow:
-    uses: jpastircak/github-actions-poc/.github/workflows/main.yml
+    uses: jpastircak/github-actions-poc/.github/workflows/main.yml@master
     with:
       test-environment: ENV1
