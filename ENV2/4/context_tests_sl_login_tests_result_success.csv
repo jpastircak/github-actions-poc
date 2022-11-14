@@ -1,0 +1,3 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Login tests","Test login positive","SUCCESS","2022-11-14T12:36:17.405185291Z[Etc/UTC]","0.0","22.38"
+"Login tests","Test login negative","SUCCESS","2022-11-14T12:36:40.134271218Z[Etc/UTC]","0.0","4.21"
